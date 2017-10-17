@@ -6,7 +6,7 @@ var Tid;
 function sample(e){
 	var ctx = document.getElementById('output').getContext('2d');
   	ctx.font = "24px selfif";
-  	ctx.fillText("input:"+String(e), 10, 50);
+  	ctx.fillText(String(e), 10, 50);
 	ctx.restore();
 	ctx.save();
 }
@@ -41,20 +41,29 @@ function PageCheck(){
     dtokuten = 0;    // 得点用
     for(ff = 0; ff < document.forms.length; ++ff){    // このページ内のすべてのフォームを処理
         if(document.forms[ff].name != "ALLCHK" && document.forms[ff].name != "TL"){  // このフォーム以外を処理
-            AnswerCheck(document.forms[ff]);     // 解答チェック
-            dtokuten = dtokuten + parseInt(document.forms[ff].TOKUTEN.value);  // 得点計算
-						document.forms[ff].KAITOU.disabled = "disabled"
+            //AnswerCheck(document.forms[ff]);     // 解答チェック
+            //dtokuten = dtokuten + parseInt(document.forms[ff].TOKUTEN.value);  // 得点計算
+						if(document.forms[ff].KAITO){
+							document.forms[ff].KAITO.disabled = true;
+							if(document.forms[ff].CORRECT.value == "正解！"){
+								dtokuten++;
+							}
+						}
         }
     }
-		sample("終了");
+		sample("4問中"+dtokuten+"問正解でした");
         // 使用不可に設定
-    SeisekiWrite(dtokuten);            // 成績(得点)記録
+  //  SeisekiWrite(dtokuten);            // 成績(得点)記録
 }
 function IsTrue(form_answer){
 	if(form_answer.KAITO.value == ""){
 		alert("no value");
+		form_answer.style="background-color:#bbfe85";
+		form_answer.CORRECT.value = "正解！";
+
 	}else{
 		alert("value:"+form_answer.KAITO.value);
+		form_answer.CORRECT.value = "不正解！";
 	}
 
 }
