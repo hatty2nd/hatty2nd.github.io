@@ -1,48 +1,53 @@
 <HTML>
 <HEAD>
-<TITLE>ラーニングアドバイザー</TITLE>
+<link rel="stylesheet" type="text/css" href="style.css">
+<TITLE>中京大学豊田図書館脱出ゲーム</TITLE>
 <SCRIPT language="JavaScript" src="anstimer.js"></SCRIPT></HEAD>
-<BODY onload="isReload();"><SCRIPT>
+<BODY  nload="isReload();"><SCRIPT>
 <!--
     //SeisekiRead();
 //-->
 </SCRIPT>
-<B><FONT size="5">脱出ゲーム 問題</FONT></B></P>
+
+<img src="images/title.png" width="100%">
 <DIV align="right">
-<FORM name="TL">制限時間（１５分）：
+<FORM name="TL">制限時間（30分）：
 <INPUT size="15" type="text" readonly name="TLIMIT" value="00:00:00">
 </FORM>
 </DIV>
 <SCRIPT language="JavaScript">
 <!--
-    TimeInit(0.05);    // 15分
+    TimeInit(30);    // 15分
 //-->
 </SCRIPT>
-<P>[解答欄］<BR>
-  <FORM name="pro1">
-1 <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro1)"><br>
-  <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+<div class="input">
+<P align="center">回答欄<BR>
+  <FORM align="center" name="pro1">
+1 <INPUT id="input" type="text" name="KAITO" >
+  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro1,0)"><br>
+  <INPUT id="state" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM >
-  <FORM name="pro2">
-2  <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro2)"><br>
-  <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+  <FORM align="center" name="pro2">
+2 <INPUT id="input" type="text" name="KAITO" >
+  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro2,1)"><br>
+  <INPUT id="state" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
-  <FORM name="pro3">
+  <FORM align="center" name="pro3">
 3  <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro3)"><br>
+  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro3,2)"><br>
   <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
-  <FORM name="pro4">
+  <FORM align="center" name="pro4">
 4  <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro4)"><br>
+  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro4,3)"><br>
   <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
 
 <FORM>
   <INPUT size = "16" type="button" value = "Debug用" onclick="debug()">
 </FORM>
-<canvas id="output" width="360" height="240"></canvas>
+<canvas id="output" width="480" height="240"></canvas>
+</p>
+</div>
 </BODY>
 </HTML>

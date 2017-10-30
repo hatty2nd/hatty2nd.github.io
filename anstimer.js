@@ -1,11 +1,11 @@
-var Answers = new Array(5);
+var Answers = new Array("hoge","fuga","hogehoge","hogefuga","hoge");
 var TimeLimit;
 var TimeStart;
 var Tid;
 
 function sample(e){
 	var ctx = document.getElementById('output').getContext('2d');
-  	ctx.font = "24px selfif";
+	ctx.font = "24px selfif";
   	ctx.fillText(String(e), 10, 50);
 	ctx.restore();
 	ctx.save();
@@ -21,7 +21,7 @@ function TimeInit(tt){
 function TimeDisplay(){
     now = new Date();
     dt = now.getTime() - TimeStart;
-		now.setTime(dt + now.getTimezoneOffset() * 60 * 1000);
+		now.setTime(TimeLimit-dt + now.getTimezoneOffset() * 60 * 1000);
     dt1 = "0" + now.getHours();    // ※2
     dt1 = dt1.substring(dt1.length - 2, dt1.length);
     dt2 = "0" + now.getMinutes();
@@ -30,6 +30,7 @@ function TimeDisplay(){
     dt3 = dt3.substring(dt3.length - 2, dt3.length);
     TL.TLIMIT.value = dt1 + ":" + dt2 + ":" + dt3;
     if(dt > TimeLimit){    // ※3
+    	TL.TLIMIT.value = "00:00:00";
         clearTimeout(Tid);    // タイマー解除
         alert("終了！ [OK] をクリックして下さい");
         PageCheck();    // ページ全体の解答チェック呼び出し
@@ -51,18 +52,24 @@ function PageCheck(){
 						}
         }
     }
+	if(dtokuten==4){
+		sample("全問正解! おめでとうございます!!")
+	}else{
 		sample("4問中"+dtokuten+"問正解でした");
+	}
         // 使用不可に設定
   //  SeisekiWrite(dtokuten);            // 成績(得点)記録
 }
-function IsTrue(form_answer){
+function IsTrue(form_answer,qnumber){
 	if(form_answer.KAITO.value == ""){
 		alert("no value");
-		form_answer.style="background-color:#bbfe85";
+	}
+	if(form_answer.KAITO.value == Answers[qnumber]){
+	form_answer.style="background-color:#bbfe85";
 		form_answer.CORRECT.value = "正解！";
 
 	}else{
-		alert("value:"+form_answer.KAITO.value);
+		form_answer.style="background-color:#cf7769";
 		form_answer.CORRECT.value = "不正解！";
 	}
 
