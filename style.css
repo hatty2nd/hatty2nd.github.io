@@ -1,6 +1,6 @@
 @font-face{
  font-family:'handshake';
- src:url(HuiFontP29.ttf);
+ src:url(fonts/HuiFontP29.ttf);
 }
 .body{
  background-image:url(images/back.jpg);
