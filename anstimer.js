@@ -1,11 +1,13 @@
 var Answers = new Array("hoge","fuga","hogehoge","hogefuga","hoge");
+var UnlockCode = "hirakegoma";
 var TimeLimit;
 var TimeStart;
 var Tid;
 
-function sample(e){
+function drawcanvas(e){
 	var ctx = document.getElementById('output').getContext('2d');
 	ctx.font = "24px selfif";
+	ctx.clearRect(0,0,600,240);
   	ctx.fillText(String(e), 10, 50);
 	ctx.restore();
 	ctx.save();
@@ -65,12 +67,12 @@ function IsTrue(form_answer,qnumber){
 		alert("no value");
 	}
 	if(form_answer.KAITO.value == Answers[qnumber]){
-	form_answer.style="background-color:#bbfe85";
-		form_answer.CORRECT.value = "正解！";
+	form_answer.CORRECT.style="color:#6cc05b";
+		form_answer.CORRECT.value = "○";
 
 	}else{
-		form_answer.style="background-color:#cf7769";
-		form_answer.CORRECT.value = "不正解！";
+		form_answer.CORRECT.style="color:#ff0000";
+		form_answer.CORRECT.value = "×";
 	}
 
 }
@@ -92,6 +94,30 @@ function isReload(){
         }
     }
 }
+
+function IsUnlock(code){
+	
+	if(code.UNLOCK.value == UnlockCode){
+		drawcanvas("AIが停止し,時間が正常に戻った");
+		clearTimeout(Tid);
+		window.setTimeout(endrole,5000);
+	}else{
+		drawcanvas("解除コードが違います");
+	}
+}
+function endrole(){
+	var ctx = document.getElementById('output').getContext('2d');
+	ctx.font = "24px selfif";
+	ctx.clearRect(0,0,600,240);
+  	ctx.fillText("小屋敷「それじゃあまた\"明日\"ね。」", 10, 40);
+  	ctx.fillText("渡辺「\"明日\"か。来ると良いね。」", 10, 80);
+  	ctx.fillText("小屋敷「来るに決まってるよ渡辺くん。」", 10, 120);
+  	ctx.fillText("渡辺「そうだね、僕たちが信じないとね小屋敷さん。」", 10, 160);
+	ctx.restore();
+	ctx.save();
+	
+}
+
 function debug(){
-	sample("test");
+	drawcanvas("test");
 }

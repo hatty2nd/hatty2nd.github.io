@@ -8,11 +8,10 @@
     //SeisekiRead();
 //-->
 </SCRIPT>
-
-<img src="images/title.png" width="100%">
-<DIV align="right">
-<FORM name="TL">制限時間（30分）：
-<INPUT size="15" type="text" readonly name="TLIMIT" value="00:00:00">
+<img src="images/title.png" width="100%" style="margin:0;">
+<DIV align="center">
+<FORM align="center" name="TL">制限時間（30分)<BR>
+<INPUT width="100%" type="text" readonly name="TLIMIT" value="00:00:00" class="timer" style="font-size:50px;color:#5fff5f;background-color:#250025;margin:0;">
 </FORM>
 </DIV>
 <SCRIPT language="JavaScript">
@@ -23,31 +22,39 @@
 <div class="input">
 <P align="center">回答欄<BR>
   <FORM align="center" name="pro1">
-1 <INPUT id="input" type="text" name="KAITO" >
-  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro1,0)"><br>
-  <INPUT id="state" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+1 <INPUT id="input" type="text" name="KAITO" class="answer">
+  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro1,0)" class="asnbutton">
+  <INPUT id="state" size="3" type="text" value = " "　readonly="readonly" name = "CORRECT" class="istrue"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM >
   <FORM align="center" name="pro2">
-2 <INPUT id="input" type="text" name="KAITO" >
-  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro2,1)"><br>
-  <INPUT id="state" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+2 <INPUT id="input" type="text" name="KAITO" class="answer">
+  <INPUT id="button" type="button" value = "回答" onclick="IsTrue(pro2,1)" class="asnbutton">
+  <INPUT id="state" size="3" type="text" value = " "　readonly="readonly" name = "CORRECT" class="istrue"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
   <FORM align="center" name="pro3">
-3  <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro3,2)"><br>
-  <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+3  <INPUT size="20" type="text" name="KAITO" class="answer">
+  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro3,2)" class="asnbutton"> 
+  <INPUT id="state" size="3" type="text" value = " "　readonly="readonly" name = "CORRECT" class="istrue"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
   <FORM align="center" name="pro4">
-4  <INPUT size="20" type="text" name="KAITO" >
-  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro4,3)"><br>
-  <INPUT size="10" type="text" value = "未入力"　readonly="readonly" name = "CORRECT"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
+4  <INPUT size="20" type="text" name="KAITO" class="answer">
+  <INPUT size="10" type="button" value = "回答" onclick="IsTrue(pro4,3)" class="asnbutton"> 
+  <INPUT id="state" size="3" type="text" value = " "　readonly="readonly" name = "CORRECT" class="istrue"> <!-- <INPUT type="hidden" name="KOTAE" value="1230"></FORM>-->
   </FORM>
 
 <FORM>
   <INPUT size = "16" type="button" value = "Debug用" onclick="debug()">
 </FORM>
-<canvas id="output" width="480" height="240"></canvas>
+<p align="center">
+<canvas align="center" id="output" width="600" height="240"></canvas>
 </p>
 </div>
+<div class="unlock">
+<FORM align="center" name="code">
+解除コード    <BR>  <INPUT size="20" type="text" name="UNLOCK" class="unlockcode">
+  <INPUT align="right" type="button" value = "解除" onclick="IsUnlock(code)" class="unlockbutton"> 
+</FORM>
+</div>
+
 </BODY>
 </HTML>

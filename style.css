@@ -1,4 +1,10 @@
-
+@font-face{
+ font-family:'handshake';
+ src:url(HuifontP29.ttf);
+}
+.body{
+ background-image:url(images/back.jpg);
+}
 .input{
  position: center;
  align-item:center;
@@ -6,9 +12,55 @@
  background-repeat:no-repeat,repeat;
  background-position:center,right;
 }
-
+.unlock{
+ position: center;
+ align-item:center;
+ padding:1.5em;
+ background-image:url(images/unlockimage.jpeg);
+ background-size:cover;
+ background-position:center;
+}
 input{
  position:center;
  text-align:center;
  fontsize:30;
+}
+
+input.timer{
+width="40%";
+height="10em";
+}
+
+input.answer{
+font-size:3em;
+font-family:handshake;
+background-color:rgba(0,0,0,0);
+border:none;
+border-bottom:medium solid #000000;
+}
+
+input.asnbutton{
+font-size:2em;
+font-family:handshake;
+background-color:#f2edda;
+}
+
+input.istrue{
+font-size:3em;
+font-family:handshake;
+border:none;
+background-color:rgba(0,0,0,0);
+}
+
+input.unlockcode{
+font-size:4em;
+color:#00ff00;
+background-color:#230024;
+border:ridge 10px #efefef;
+}
+input.unlockbutton{
+font-size:3em;
+color:#ffffff;
+background-color:#333333;
+border:groove 4px #404040;
 }
