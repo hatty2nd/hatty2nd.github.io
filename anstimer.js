@@ -1,5 +1,5 @@
-var Answers = new Array("hoge","fuga","hogehoge","hogefuga","hoge");
-var UnlockCode = "hirakegoma";
+var Answers = new Array("word","DOG","V","L","X","angel","cord","おしまい");
+var UnlockCode = "LOVE";
 var TimeLimit;
 var TimeStart;
 var Tid;
