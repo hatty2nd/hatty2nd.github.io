@@ -1,5 +1,5 @@
-var Answers = new Array("word","DOG","V","L","X","angel","cord","おしまい");
-var UnlockCode = "LOVE";
+var Answers = new Array("world","dog","v","l","x","angel","cord","おしまい");
+var UnlockCode = "love";
 var TimeLimit;
 var TimeStart;
 var Tid;
@@ -100,7 +100,7 @@ function IsUnlock(code){
 	if(code.UNLOCK.value == UnlockCode){
 		drawcanvas("AIが停止し,時間が正常に戻った");
 		clearTimeout(Tid);
-		window.setTimeout(endrole,5000);
+		window.setTimeout(endrole,3000);
 	}else{
 		drawcanvas("解除コードが違います");
 	}
@@ -115,9 +115,17 @@ function endrole(){
   	ctx.fillText("渡辺「そうだね、僕たちが信じないとね小屋敷さん。」", 10, 160);
 	ctx.restore();
 	ctx.save();
+	window.setTimeout(skip_link,5000);
 	
 }
 
+function skip_link(){
+	var ctx = document.getElementById('output').getContext('2d');
+	ctx.font = "24px selfif";
+	ctx.clearRect(0,0,600,240);
+  	ctx.fillText("アナザーストーリーはこちら", 10, 40);
+ 
+}
 function debug(){
 	drawcanvas("test");
 }
