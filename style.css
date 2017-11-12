@@ -13,6 +13,7 @@
  background-position:center,right;
 }
 .unlock{
+ display:none;
  position: center;
  align-item:center;
  padding:1.5em;
@@ -20,7 +21,10 @@
  background-size:cover;
  background-position:center;
 }
-
+.link{
+ display:none;
+ font-size:3em;
+}
 a1{
 font-size:30px;
 }

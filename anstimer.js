@@ -3,6 +3,7 @@ var UnlockCode = "love";
 var TimeLimit;
 var TimeStart;
 var Tid;
+var truecount;
 
 function drawcanvas(e){
 	var ctx = document.getElementById('output').getContext('2d');
@@ -40,24 +41,25 @@ function TimeDisplay(){
 }
 
 function PageCheck(){
-    clearTimeout(Tid);    // タイマー解除
+    //clearTimeout(Tid);    // タイマー解除
     dtokuten = 0;    // 得点用
     for(ff = 0; ff < document.forms.length; ++ff){    // このページ内のすべてのフォームを処理
-        if(document.forms[ff].name != "ALLCHK" && document.forms[ff].name != "TL"){  // このフォーム以外を処理
+        if(document.forms[ff].name != "code" && document.forms[ff].name != "TL"){  // このフォーム以外を処理
             //AnswerCheck(document.forms[ff]);     // 解答チェック
             //dtokuten = dtokuten + parseInt(document.forms[ff].TOKUTEN.value);  // 得点計算
-						if(document.forms[ff].KAITO){
-							document.forms[ff].KAITO.disabled = true;
-							if(document.forms[ff].CORRECT.value == "正解！"){
-								dtokuten++;
-							}
-						}
+		if(document.forms[ff].KAITO){
+		//	document.forms[ff].KAITO.disabled = true;
+			if(document.forms[ff].CORRECT.value == "○"){
+				dtokuten++;
+			}
+		}
         }
     }
-	if(dtokuten==4){
-		sample("全問正解! おめでとうございます!!")
+	if(dtokuten==8){
+		document.getElementById('unlockcode').style.display="block";
 	}else{
-		sample("4問中"+dtokuten+"問正解でした");
+		 document.getElementById('link').style.display="none";
+		 document.getElementById('unlockcode').style.display="none";
 	}
         // 使用不可に設定
   //  SeisekiWrite(dtokuten);            // 成績(得点)記録
@@ -67,8 +69,9 @@ function IsTrue(form_answer,qnumber){
 		alert("no value");
 	}
 	if(form_answer.KAITO.value == Answers[qnumber]){
-	form_answer.CORRECT.style="color:#6cc05b";
+		form_answer.CORRECT.style="color:#6cc05b";
 		form_answer.CORRECT.value = "○";
+		PageCheck();
 
 	}else{
 		form_answer.CORRECT.style="color:#ff0000";
@@ -93,6 +96,8 @@ function isReload(){
             clearTimeout(Tid);    // タイマー解除
         }
     }
+	document.getElementById('link').style.display="none";
+	document.getElementById('code').style.display="none";
 }
 
 function IsUnlock(code){
@@ -120,11 +125,7 @@ function endrole(){
 }
 
 function skip_link(){
-	var ctx = document.getElementById('output').getContext('2d');
-	ctx.font = "24px selfif";
-	ctx.clearRect(0,0,600,240);
-  	ctx.fillText("アナザーストーリーはこちら", 10, 40);
- 
+	document.getElementById('link').style.display="block";
 }
 function debug(){
 	drawcanvas("test");
