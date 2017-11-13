@@ -4,6 +4,7 @@ var TimeLimit;
 var TimeStart;
 var Tid;
 var truecount;
+var timeorverflag=false;
 
 function drawcanvas(e){
 	var ctx = document.getElementById('output').getContext('2d');
@@ -36,6 +37,7 @@ function TimeDisplay(){
     	TL.TLIMIT.value = "00:00:00";
         clearTimeout(Tid);    // タイマー解除
         alert("終了！ [OK] をクリックして下さい");
+        timeorverflag=true;
         PageCheck();    // ページ全体の解答チェック呼び出し
     }
 }
@@ -44,13 +46,20 @@ function PageCheck(){
     //clearTimeout(Tid);    // タイマー解除
     dtokuten = 0;    // 得点用
     for(ff = 0; ff < document.forms.length; ++ff){    // このページ内のすべてのフォームを処理
-        if(document.forms[ff].name != "code" && document.forms[ff].name != "TL"){  // このフォーム以外を処理
+        if( document.forms[ff].name != "TL"){  // このフォーム以外を処理
             //AnswerCheck(document.forms[ff]);     // 解答チェック
             //dtokuten = dtokuten + parseInt(document.forms[ff].TOKUTEN.value);  // 得点計算
 		if(document.forms[ff].KAITO){
-		//	document.forms[ff].KAITO.disabled = true;
+			if(timeorverflag){
+				document.forms[ff].KAITO.disabled = true;
+			}
 			if(document.forms[ff].CORRECT.value == "○"){
 				dtokuten++;
+			}
+		}
+		if(document.forms[ff].UNLOCK){
+			if(timeorverflag){
+				document.forms[ff].UNLOCK.disabled = true;
 			}
 		}
         }
