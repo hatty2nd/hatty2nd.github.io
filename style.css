@@ -9,7 +9,7 @@
  position: center;
  align-item:center;
  background-image:url(images/sheet.png),url(images/back.jpg);
- background-repeat:no-repeat,repeat;
+ background-repeat:repeat-y,repeat;
  background-position:center,right;
 }
 .unlock{
